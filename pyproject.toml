@@ -1,5 +1,5 @@
 [project]
-name = "metadata-api"
+name = "PureFile"
 version = "0.1.0"
 description = "API designed for removing and reading metadata for png, jpg, docx, pdf"
 readme = "README.md"
