@@ -1,17 +1,17 @@
 from .config import settings
+from app.services.temp_manager import create_temp_dir , delete_dir
 
-
-# from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 
 
-# @asynccontextmanager
-# async def lifespan(app: FastAPI):
-#     app.state.temp_dir = create_temp_dir()
-#     yield
-#     delete_dir(app.state.temp_dir)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.temp_dir = create_temp_dir()
+    yield
+    delete_dir(app.state.temp_dir)
     
 
 
