@@ -10,6 +10,7 @@ dependencies = [
     "pillow>=12.1.1",
     "pydantic>=2.12.5",
     "pydantic-settings>=2.13.1",
+    "pymupdf>=1.27.1",
     "pypdf>=6.7.2",
     "uvicorn>=0.41.0",
 ]
