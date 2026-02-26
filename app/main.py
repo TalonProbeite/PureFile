@@ -1,5 +1,6 @@
 from .config import settings
 from app.services.temp_manager import create_temp_dir , delete_dir
+from app.services.logger_config import setup_logging
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -10,6 +11,7 @@ from fastapi.responses import HTMLResponse
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.temp_dir = create_temp_dir()
+    setup_logging()
     yield
     delete_dir(app.state.temp_dir)
     
@@ -18,7 +20,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.app_name,
     debug=settings.debug,
-    # lifespan=lifespan
+    lifespan=lifespan
 )
 
 
