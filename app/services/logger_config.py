@@ -11,7 +11,7 @@ def setup_logging():
   
     logger.add(
         sys.stdout,
-        format="<level>{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | IP: {extra[client_ip]} | {message}</level>",
+        format="<level>{time:YYYY-MM-DD HH:mm:ss} | {level: <8} |  {message}</level>",
         colorize=True,
         level="DEBUG"
     )
@@ -34,4 +34,3 @@ def setup_logging():
     )
 
 
-    logger.configure(extra={"client_ip": "system"}) 
