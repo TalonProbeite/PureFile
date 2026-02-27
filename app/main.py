@@ -2,7 +2,7 @@ from .config import settings
 from .middlewares import log_runtime_middleware
 from app.services.temp_manager import create_temp_dir , delete_dir
 from app.services.logger_config import setup_logging
-
+from app.routes.metadata_routes import router as read_metadata_router
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -27,8 +27,6 @@ app = FastAPI(
 
 
 app.middleware("http")(log_runtime_middleware)
-
-
 app.add_middleware(
     CORSMiddleware, 
     allow_origins = settings.cors_origins,
@@ -37,6 +35,8 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
+
+app.include_router(read_metadata_router)
 
 
 @app.get("/", response_class=HTMLResponse)
