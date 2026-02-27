@@ -15,7 +15,8 @@ async def lifespan(app: FastAPI):
     app.state.temp_dir = create_temp_dir()
     setup_logging()
     yield
-    delete_dir(app.state.temp_dir)
+    if  app.state.temp_dir:
+        delete_dir(app.state.temp_dir)
     
 
 
