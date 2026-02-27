@@ -1,7 +1,9 @@
 import typing
 from PIL import Image, ImageFile , UnidentifiedImageError 
 import fitz
-from docx import Document ,  BadZipFile , PackageNotFoundError
+from docx import Document
+from docx.opc.exceptions import PackageNotFoundError
+from zipfile import BadZipFile
 
 
 MAX_META_STRING = 5000 
