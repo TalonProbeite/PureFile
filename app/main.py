@@ -1,6 +1,8 @@
 from .config import settings
+from .middlewares import log_runtime_middleware
 from app.services.temp_manager import create_temp_dir , delete_dir
 from app.services.logger_config import setup_logging
+
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -24,7 +26,7 @@ app = FastAPI(
 )
 
 
-
+app.middleware("http")(log_runtime_middleware)
 
 
 app.add_middleware(
