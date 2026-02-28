@@ -63,8 +63,7 @@ async def delete_metadata_img(file: UploadFile, job_dir: Path, filename: str) ->
     
     try:
         data = b""
-        async for chunk in file:
-            data += chunk
+        data = await file.read()
         
         img = Image.open(io.BytesIO(data))
         clean = Image.new(img.mode, img.size)
